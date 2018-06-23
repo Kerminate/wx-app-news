@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello Kerminate',
+    motto: '开启小程序之旅',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -13,6 +13,11 @@ Page({
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  onTap: function () {
+    wx.redirectTo({
+      url: '../posts/posts'
     })
   },
   onLoad: function () {
