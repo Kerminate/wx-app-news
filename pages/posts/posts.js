@@ -12,7 +12,7 @@ Page({
   onPostTap: function (event) {
     const postId = event.currentTarget.dataset.postid
     wx.navigateTo({
-      url: 'post-detail/post-detail'
+      url: 'post-detail/post-detail?id=' + postId
     })
   }
 })
