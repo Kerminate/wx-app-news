@@ -1,4 +1,5 @@
 const dataList = require('../../../data/posts-data.js')
+const app = getApp()
 
 Page({
   data: {
@@ -26,6 +27,22 @@ Page({
       postsCollected[postId] = false
       wx.setStorageSync('posts_collected', postsCollected)
     }
+
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentPostId === postId) {
+      this.setData({ isPlayingMusic: true })
+    }
+    this.setMusicMonitor()
+  },
+  setMusicMonitor () {
+    wx.onBackgroundAudioPlay(() => {
+      this.setData({ isPlayingMusic: true })
+      app.globalData.g_isPlayingMusic = true
+      app.globalData.g_currentPostId = this.data.currentPostId
+    })
+    wx.onBackgroundAudioPause(() => {
+      this.setData({ isPlayingMusic: false })
+      app.globalData.g_isPlayingMusic = false
+    })
   },
   onCollectionTap: function () {
     const postsCollected = wx.getStorageSync('posts_collected')

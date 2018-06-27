@@ -14,5 +14,12 @@ Page({
     wx.navigateTo({
       url: 'post-detail/post-detail?id=' + postId
     })
+  },
+  onSwiperTap: function (event) {
+    // target 是被点击的组件，currentTarget 是捕获事件的组件
+    const postId = event.target.dataset.postid
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId
+    })
   }
 })
