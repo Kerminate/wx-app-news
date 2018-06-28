@@ -14,6 +14,38 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const convertToStarsArray = (stars) => {
+  const num = +stars.toString().substring(0, 1)
+  const half = +stars.toString().substring(1, 2)
+  const array = []
+  for (let i = 0; i < 5; i++) {
+    if (i < num || (i === num && half > 0)) {
+      array.push(1)
+    } else {
+      array.push(0)
+    }
+  }
+  return array
+}
+
+const http = (url, callback) => {
+  wx.request({
+    url,
+    method: 'GET',
+    header: {
+      'content-type': 'application/xml'
+    },
+    success: function (res) {
+      callback(res.data)
+    },
+    fail: function (err) {
+      console.log(err)
+    }
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  convertToStarsArray,
+  http
 }
