@@ -5,7 +5,7 @@ Page({
   data: {
     currentPostId: 0,
     postData: [],
-    collected: '',
+    collected: false,
     isPlayingMusic: false
   },
   onLoad: function (option) {
@@ -42,6 +42,12 @@ Page({
     wx.onBackgroundAudioPause(() => {
       this.setData({ isPlayingMusic: false })
       app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentPostId = null
+    })
+    wx.onBackgroundAudioStop(() => {
+      this.setData({ isPlayingMusic: false })
+      app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentPostId = null
     })
   },
   onCollectionTap: function () {

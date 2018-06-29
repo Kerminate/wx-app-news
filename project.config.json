@@ -38,7 +38,8 @@
 				{
 					"id": -1,
 					"name": "article",
-					"pathName": "pages/posts/posts"
+					"pathName": "pages/posts/posts",
+					"query": ""
 				}
 			]
 		}

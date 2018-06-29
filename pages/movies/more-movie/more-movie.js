@@ -72,5 +72,11 @@ Page({
     })
     util.http(refreshUrl, this.processDoubanData)
     wx.showNavigationBarLoading()
+  },
+  onMovieTap (event) {
+    const movieid = event.currentTarget.dataset.movieid
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieid
+    })
   }
 })
