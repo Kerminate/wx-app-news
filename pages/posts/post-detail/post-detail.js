@@ -8,7 +8,7 @@ Page({
     collected: false,
     isPlayingMusic: false
   },
-  onLoad: function (option) {
+  onLoad (option) {
     const postId = option.id
     const postData = dataList.postList[postId]
     this.setData({
@@ -50,14 +50,14 @@ Page({
       app.globalData.g_currentPostId = null
     })
   },
-  onCollectionTap: function () {
+  onCollectionTap () {
     const postsCollected = wx.getStorageSync('posts_collected')
     let postCollected = postsCollected[this.data.currentPostId]
     postCollected = !postCollected
     postsCollected[this.data.currentPostId] = postCollected
     this.showToast(postsCollected, postCollected)
   },
-  showToast: function (postsCollected, postCollected) {
+  showToast (postsCollected, postCollected) {
     wx.setStorageSync('posts_collected', postsCollected)
     this.setData({
       collected: postCollected
@@ -67,7 +67,7 @@ Page({
       duration: 1000
     })
   },
-  onShareTap: function () {
+  onShareTap () {
     const itemList = [
       '分享到微信好友',
       '分享到朋友圈',
@@ -85,7 +85,7 @@ Page({
       }
     })
   },
-  onMusicTap: function () {
+  onMusicTap () {
     const currentPostId = this.data.currentPostId
     const postData = dataList.postList[currentPostId]
     const isPlayingMusic = this.data.isPlayingMusic
